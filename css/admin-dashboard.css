@@ -416,6 +416,11 @@ table td.name-col {
   width: 200px;
 }
 
+/* tweet_sensyuken.html */
+.tweet-sensyuken-page form input[type="text"] {
+  width: 220px;
+}
+
 /* account_regist.html, account_regist2.html   */
 .input-group input[type="text"] {
   width: 80%;
