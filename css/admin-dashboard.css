@@ -461,6 +461,40 @@ input[type="text"].short {
   }
 }
 
+/* password.html */
+.password-page .main {
+  max-width: 800px;
+}
+
+.password-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.password-page form {
+  width: 100%;
+}
+
+.password-page label {
+  margin-top: 15px;
+}
+
+.password-page input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #0f172a;
+  color: white;
+  border: 1px solid #d4af37;
+  border-radius: 6px;
+}
+
+.password-page .btn {
+  margin-top: 25px;
+  padding: 12px 20px;
+  font-size: 16px;
+}
+
 /* user_master.html */
 
 input[type="GROQ_API_KEY"], input[type="OPENAI_API_KEY"] {
