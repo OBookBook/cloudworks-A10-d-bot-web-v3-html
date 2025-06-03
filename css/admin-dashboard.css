@@ -460,3 +460,14 @@ input[type="text"].short {
     grid-template-columns: 1fr;
   }
 }
+
+/* user_master.html */
+
+input[type="GROQ_API_KEY"], input[type="OPENAI_API_KEY"] {
+  border: 1px solid #d4af37;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: #0f172a;
+  color: white;
+  font-size: 16px;
+}
