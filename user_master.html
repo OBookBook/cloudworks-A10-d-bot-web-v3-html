@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>プロフィール設定</title>
+    <link rel="stylesheet" href="_lib/style.css">
+    <link rel="stylesheet" href="./styles/style.css" />
+    <style>
+        input[type="GROQ_API_KEY"], input[type="OPENAI_API_KEY"] {
+            border: 1px solid #d4af37;
+            border-radius: 6px;
+            padding: 10px;
+            background-color: #0f172a;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <div class="sidebar">
+        <h2>設定メニュー</h2>
+        <!-- ゲストモード用メニュー -->
+        <!-- <a href="tweet_japanese.html">日本人いいね</a> -->
+        <!-- <a href="./tweet_japanese.html">Twitter拡散サービス(日本人いいね)</a> -->
+        <a href="./tweet_sensyuken.html">選手権いいね</a>
+        <a href="./tweet.html">いいね・ﾌﾞｯｸﾏｰｸ</a>
+        <a href="./account_list.html">Xアカウント一覧</a>
+        <a href="./account_regist.html">Xアカウント登録</a>
+        <a href="./account_regist2.html">Xアカウント登録(貸出)</a>
+        <a href="./password.html">パスワード変更</a>
+        <a href="./upload.html">動画アップロード</a>
+        <a href="./upload.html">画像アップロード</a>
+        <a href="./user_master.html">AI API設定</a>
+        <a href="./user_list.html">ユーザー編集(管理者)</a>
+        <a href="./login.html">ログアウト</a>
+      </div>
+
+  <div class="main">
+    <!-- コンテンツエリア -->
+    <div class="content" id="content">
+        <form action="?" method="post">
+
+            <label for="GROQ_API_KEY">GROQ_API_KEY:</label><br>
+            <input type="GROQ_API_KEY" id="GROQ_API_KEY" name="GROQ_API_KEY" value="<?php echo htmlspecialchars($GROQ_API_KEY); ?>" style="width: 600px;"><br><br>
+
+            <label for="OPENAI_API_KEY">OPENAI_API_KEY:</label><Br>
+            <input type="OPENAI_API_KEY" id="OPENAI_API_KEY" name="OPENAI_API_KEY" value="<?php echo htmlspecialchars($OPENAI_API_KEY); ?>" style="width: 600px;"><br><br>
+
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

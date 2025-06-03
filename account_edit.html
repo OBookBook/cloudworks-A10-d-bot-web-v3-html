@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Xアカウント編集</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="layout">
+<!-- サイドメニュー -->
+<div class="sidebar">
+    <h2>設定メニュー</h2>
+    <!-- ゲストモード用メニュー -->
+    <!-- <a href="tweet_japanese.html">日本人いいね</a> -->
+    <!-- <a href="./tweet_japanese.html">Twitter拡散サービス(日本人いいね)</a> -->
+    <a href="./tweet_sensyuken.html">選手権いいね</a>
+    <a href="./tweet.html">いいね・ﾌﾞｯｸﾏｰｸ</a>
+    <a href="./account_list.html">Xアカウント一覧</a>
+    <a href="./account_regist.html">Xアカウント登録</a>
+    <a href="./account_regist2.html">Xアカウント登録(貸出)</a>
+    <a href="./password.html">パスワード変更</a>
+    <a href="./upload.html">動画アップロード</a>
+    <a href="./upload.html">画像アップロード</a>
+    <a href="./user_master.html">AI API設定</a>
+    <a href="./user_list.html">ユーザー編集(管理者)</a>
+    <a href="./login.html">ログアウト</a>
+  </div>
+
+    <div class="main">
+      <div class="card">
+        <h2 class="tx-white">Xアカウント編集</h2>
+        <form method="POST" action="?">
+          <label>名前</label>
+          <input type="text" name="name" value="<?= htmlspecialchars($edit_account['name'] ?? '') ?>">
+
+          <label>ログインID</label>
+          <input type="text" name="login_id" value="<?= htmlspecialchars($edit_account['login_id'] ?? '') ?>">
+
+          <label>ログインパス</label>
+          <input type="text" name="login_password" value="<?= htmlspecialchars($edit_account['login_password'] ?? '') ?>">
+
+          <label>Client ID</label>
+          <input type="text" name="client_id" value="<?= htmlspecialchars($edit_account['client_id'] ?? '') ?>">
+
+          <label>Client Secret</label>
+          <input type="text" name="client_secret" value="<?= htmlspecialchars($edit_account['client_secret'] ?? '') ?>">
+
+          <label>DMM ID</label>
+          <input type="text" name="dmm_id" value="<?= htmlspecialchars($edit_account['dmm_id'] ?? '') ?>">
+
+          <label>API Key</label>
+          <input type="text" name="api_key" value="<?= htmlspecialchars($edit_account['api_key'] ?? '') ?>">
+
+          <label>API Key Secret</label>
+          <input type="text" name="api_key_secret" value="<?= htmlspecialchars($edit_account['api_key_secret'] ?? '') ?>">
+
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="enable" value="1" <?= !empty($edit_account['enable']) ? 'checked' : '' ?>>有効</label>
+            <label><input type="checkbox" name="like_enable" value="1" <?= !empty($edit_account['like_enable']) ? 'checked' : '' ?>>いいね</label>
+            <label><input type="checkbox" name="bookmark_enable" value="1" <?= !empty($edit_account['bookmark_enable']) ? 'checked' : '' ?>>ブックマーク</label>
+            <label><input type="checkbox" name="reply_enable" value="1" <?= !empty($edit_account['reply_enable']) ? 'checked' : '' ?>>リプライ</label>
+            <label><input type="checkbox" name="repost_enable" value="1" <?= !empty($edit_account['repost_enable']) ? 'checked' : '' ?>>リポスト</label>
+          </div>
+
+          <label>監視実施 <input type="checkbox" name="search_enable" value="1" <?= !empty($edit_account['search_enable']) ? 'checked' : '' ?>></label>
+          <label>監視周期（分）</label>
+          <input type="number" name="check_interval" value="<?= htmlspecialchars($edit_account['check_interval'] ?? '') ?>">
+
+          <label>プロキシ使用 <input type="checkbox" name="proxy_enable" value="1" <?= !empty($edit_account['proxy_enable']) ? 'checked' : '' ?>></label>
+          <label>プロキシURL</label>
+          <input type="text" name="proxy_url" value="<?= htmlspecialchars($edit_account['proxy_url'] ?? '') ?>">
+
+          <label>有料アカウント <input type="checkbox" name="paid" value="1" <?= !empty($edit_account['paid']) ? 'checked' : '' ?>></label>
+          <label>有料API（いいね） <input type="checkbox" name="paid_like" value="1" <?= !empty($edit_account['paid_like']) ? 'checked' : '' ?>></label>
+          <label>有料API（ブックマーク） <input type="checkbox" name="paid_bookmark" value="1" <?= !empty($edit_account['paid_bookmark']) ? 'checked' : '' ?>></label>
+
+          <h3>ポスト予約設定</h3>
+          <label>時間帯1</label><br>
+          <input type="checkbox" name="reserve1_enable" value="1" <?= !empty($edit_account['reserve1_enable']) ? 'checked' : '' ?>>
+          <input type="text" name="reserve1_start_hour" class="short" value="<?= htmlspecialchars($edit_account['reserve1_start_hour'] ?? '') ?>"> ～
+          <input type="text" name="reserve1_end_hour" class="short" value="<?= htmlspecialchars($edit_account['reserve1_end_hour'] ?? '') ?>"> 時　
+          <input type="text" name="reserve1_count" class="short" value="<?= htmlspecialchars($edit_account['reserve1_count'] ?? '') ?>"> 回
+
+          <label>AIコメントON <input type="checkbox" name="reserve1_ai" value="1" <?= !empty($edit_account['reserve1_ai']) ? 'checked' : '' ?>></label>
+
+          <h3>AI設定</h3>
+          <label>AIポスト <input type="checkbox" name="ai_post_enable" value="1" <?= !empty($edit_account['ai_post_enable']) ? 'checked' : '' ?>></label>
+          <label>AIリプライ <input type="checkbox" name="ai_reply_enable" value="1" <?= !empty($edit_account['ai_reply_enable']) ? 'checked' : '' ?>></label>
+
+          <label>AIモード</label>
+          <label><input type="radio" name="ai_mode" value="0" <?= ($edit_account['ai_mode'] ?? '') == 0 ? 'checked' : '' ?>>なし</label>
+          <label><input type="radio" name="ai_mode" value="1" <?= ($edit_account['ai_mode'] ?? '') == 1 ? 'checked' : '' ?>>自由</label>
+          <label><input type="radio" name="ai_mode" value="2" <?= ($edit_account['ai_mode'] ?? '') == 2 ? 'checked' : '' ?>>裏垢女子</label>
+          <label><input type="radio" name="ai_mode" value="3" <?= ($edit_account['ai_mode'] ?? '') == 3 ? 'checked' : '' ?>>トレンド</label>
+
+          <label>ポスト用プロンプト</label>
+          <textarea name="ai_post_prompt"><?= htmlspecialchars($edit_account['ai_post_prompt'] ?? '') ?></textarea>
+
+          <label>ポスト例文</label>
+          <textarea name="ai_post_example"><?= htmlspecialchars($edit_account['ai_post_example'] ?? '') ?></textarea>
+
+          <label>リプ用プロンプト</label>
+          <textarea name="ai_reply_prompt"><?= htmlspecialchars($edit_account['ai_reply_prompt'] ?? '') ?></textarea>
+
+          <label>リプ例文</label>
+          <textarea name="ai_reply_example"><?= htmlspecialchars($edit_account['ai_reply_example'] ?? '') ?></textarea>
+
+          <label>トレンドプロンプト</label>
+          <textarea name="ai_trend_prompt"><?= htmlspecialchars($edit_account['ai_trend_prompt'] ?? '') ?></textarea>
+
+          <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
+          <button class="btn" type="submit">更新</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

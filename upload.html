@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo e( $title ) ?>アップロード</title>
+    <script src="
+    https://cdn.jsdelivr.net/npm/choices.js@11.0.2/public/assets/scripts/choices.min.js
+    "></script>
+    <link href="
+    https://cdn.jsdelivr.net/npm/choices.js@11.0.2/public/assets/styles/choices.min.css
+    " rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="./main.css">
+  <style>
+    .main {
+      max-width: 1000px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+      padding: 8px;
+      background-color: #0f172a;
+      color: white;
+      border: 1px solid #374151;
+      border-radius: 6px;
+    }
+    .btn {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      background: linear-gradient(to right, #3b82f6, #2563eb);
+      color: white;
+    }
+    select {
+      padding: 10px;
+      border: 1px solid #d4af37;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+    <div class="sidebar">
+        <h2>設定メニュー</h2>
+        <!-- ゲストモード用メニュー -->
+        <!-- <a href="tweet_japanese.html">日本人いいね</a> -->
+        <!-- <a href="./tweet_japanese.html">Twitter拡散サービス(日本人いいね)</a> -->
+        <a href="./tweet_sensyuken.html">選手権いいね</a>
+        <a href="./tweet.html">いいね・ﾌﾞｯｸﾏｰｸ</a>
+        <a href="./account_list.html">Xアカウント一覧</a>
+        <a href="./account_regist.html">Xアカウント登録</a>
+        <a href="./account_regist2.html">Xアカウント登録(貸出)</a>
+        <a href="./password.html">パスワード変更</a>
+        <a href="./upload.html">動画アップロード</a>
+        <a href="./upload.html">画像アップロード</a>
+        <a href="./user_master.html">AI API設定</a>
+        <a href="./user_list.html">ユーザー編集(管理者)</a>
+        <a href="./login.html">ログアウト</a>
+      </div>
+
+    <div class="main">
+   <h2 class="tx-white">アカウント選択</h2>
+   <form method="GET" action="?">
+      <input type="hidden" name="type" value="<?php echo e($type) ?>">
+      <select name="xuser" id="xuser" required>
+        <?php foreach ($xusers as $xu): ?>
+          <option value="<?= htmlspecialchars($xu['id']) ?>" <?= ($xu['id'] == $xuser_id) ? 'selected' : '' ?>>
+            <?= htmlspecialchars($xu['name']) ?> [ID=<?= $xu['id'] ?>]
+          </option>
+        <?php endforeach; ?>
+      </select>
+   </form>
+
+    <script>
+
+    function deleteFile(button,id) {
+        if (confirm( "<?php echo e($title) ?> ID " + id + " を削除します。")) {
+            button.form.submit();
+        }
+    }
+
+    (function(){
+        document.addEventListener('DOMContentLoaded',function(){
+            const xuserEl = document.getElementById('form_xuser')
+            xuserEl.addEventListener('change',function(){
+                xuserEl.closest('form').submit();
+            });
+
+            const choices = new Choices('#form_xuser', {
+                searchEnabled: true,
+                itemSelectText: '',
+            });
+
+        });
+    })();
+    </script>
+ </div>
+</body>
+</html>

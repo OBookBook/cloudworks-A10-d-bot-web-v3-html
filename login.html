@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ログイン - X-DBOT</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="noise-overlay"></div>
+
+    <a href="index.html" class="back-link">ホームに戻る</a>
+
+    <div class="login-container">
+      <div class="login-box fade-in">
+        <div class="login-header">
+          <h1>X-DBOT<span class="gold-dot">.</span></h1>
+          <p>アカウントにログイン</p>
+        </div>
+
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="email">ユーザーID</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">パスワード</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn-login">ログイン</button>
+
+          <!-- <p
+            style="
+              color: #333;
+              font-size: 16px;
+              text-align: center;
+              margin: 20px 0;
+            "
+          >
+            デモのため、こちらで管理画面に遷移
+          </p>
+          <a
+            href="./sidebar.html"
+            class="btn-signup"
+            style="
+              color: #fff;
+              background-color: #007bff;
+              padding: 10px 15px;
+              border-radius: 5px;
+              text-decoration: none;
+            "
+            >ログインページに遷移</a
+          > -->
+        </form>
+      </div>
+    </div>
+
+    <script src="js/animations.js"></script>
+  </body>
+</html>

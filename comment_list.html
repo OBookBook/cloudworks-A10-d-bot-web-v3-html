@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>コメント一覧</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css" />
+
+</head>
+
+<body>
+    <div class="layout">
+        <!-- サイドメニュー -->
+<div class="sidebar">
+    <h2>設定メニュー</h2>
+    <!-- ゲストモード用メニュー -->
+    <!-- <a href="tweet_japanese.html">日本人いいね</a> -->
+    <!-- <a href="./tweet_japanese.html">Twitter拡散サービス(日本人いいね)</a> -->
+    <a href="./tweet_sensyuken.html">選手権いいね</a>
+    <a href="./tweet.html">いいね・ﾌﾞｯｸﾏｰｸ</a>
+    <a href="./account_list.html">Xアカウント一覧</a>
+    <a href="./account_regist.html">Xアカウント登録</a>
+    <a href="./account_regist2.html">Xアカウント登録(貸出)</a>
+    <a href="./password.html">パスワード変更</a>
+    <a href="./upload.html">動画アップロード</a>
+    <a href="./upload.html">画像アップロード</a>
+    <a href="./user_master.html">AI API設定</a>
+    <a href="./user_list.html">ユーザー編集(管理者)</a>
+    <a href="./login.html">ログアウト</a>
+  </div>
+        <div class="main">
+
+            <h2 class="tx-white">ポスト一覧</h2>
+            <table>
+                <tr>
+                    <th>有効</th>
+                    <th>コメント</th>
+                    <th>動画/画像</th>
+                    <th>時間帯</th>
+                    <th>操作</th>
+                </tr>
+                <?php if ($post_comments && $post_comments instanceof mysqli_result): ?>
+                    <!-- <?php while ($row = $post_comments->fetch_assoc()): ?> -->
+                        <tr>
+                            <td><?= $row['enable'] ? '〇' : '×' ?></td>
+                            <td><?= htmlspecialchars($row['comment']) ?></td>
+                            <?php if (!empty($_SESSION['media_enable'])): ?>
+                                <td>
+                                    <?= !empty($row['movie_enable']) ? '動画' : (!empty($row['photo_enable']) ? '画像' : 'なし') ?>
+                                </td>
+                            <?php endif; ?>
+                            <td><?= '時間帯' . $row['reserve_mode'] ?></td>
+                            <td>
+                                <button class="btn" onclick="editComment(<?= $row['id'] ?>)">編集</button>
+                                <form method="POST" action="?" style="display:inline;">
+                                    <input type="hidden" name="type" value="comment_del">
+                                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                                    <input type="hidden" name="account_id" value="<?= $account_id ?>">
+                                    <button type="submit" class="btn" onclick="return confirm('削除しますか？')">削除</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </table>
+
+            <h2 class="tx-white">リプライ一覧</h2>
+            <table>
+                <tr>
+                    <th>有効</th>
+                    <th>コメント</th>
+                    <th>動画/画像</th>
+                    <th>操作</th>
+                </tr>
+                <?php if ($reply_comments && $reply_comments instanceof mysqli_result): ?>
+                    <!-- <?php while ($row = $reply_comments->fetch_assoc()): ?> -->
+                        <tr>
+                            <td><?= $row['enable'] ? '〇' : '×' ?></td>
+                            <td><?= htmlspecialchars($row['comment']) ?></td>
+                            <?php if (!empty($_SESSION['media_enable'])): ?>
+                                <td>
+                                    <?= !empty($row['movie_enable']) ? '動画' : (!empty($row['photo_enable']) ? '画像' : 'なし') ?>
+                                </td>
+                            <?php endif; ?>
+                            <td>
+                                <button class="btn" onclick="editComment(<?= $row['id'] ?>)">編集</button>
+                                <form method="POST" action="?" style="display:inline;">
+                                    <input type="hidden" name="type" value="comment_del">
+                                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                                    <input type="hidden" name="account_id" value="<?= $account_id ?>">
+                                    <button type="submit" class="btn" onclick="return confirm('削除しますか？')">削除</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </table>
+
+            <h2 class="tx-white">リプtoリプ一覧</h2>
+            <table>
+                <tr>
+                    <th>有効</th>
+                    <th>コメント</th>
+                    <th>動画/画像</th>
+                    <th>操作</th>
+                </tr>
+                <?php if ($reply_to_reply_comments && $reply_to_reply_comments instanceof mysqli_result): ?>
+                    <!-- <?php while ($row = $reply_to_reply_comments->fetch_assoc()): ?> -->
+                        <tr>
+                            <td><?= $row['enable'] ? '〇' : '×' ?></td>
+                            <td><?= htmlspecialchars($row['comment']) ?></td>
+                            <?php if (!empty($_SESSION['media_enable'])): ?>
+                                <td>
+                                    <?= !empty($row['movie_enable']) ? '動画' : (!empty($row['photo_enable']) ? '画像' : 'なし') ?>
+                                </td>
+                            <?php endif; ?>
+                            <td>
+                                <button class="btn" onclick="editComment(<?= $row['id'] ?>)">編集</button>
+                                <form method="POST" action="?" style="display:inline;">
+                                    <input type="hidden" name="type" value="comment_del">
+                                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                                    <input type="hidden" name="account_id" value="<?= $account_id ?>">
+                                    <button type="submit" class="btn" onclick="return confirm('削除しますか？')">削除</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </table>
+        </div>
+    </div>
+    <script>
+        function editComment(id) {
+            location.href = './comment_edit.php?id=' + id;
+        }
+    </script>
+</body>
+
+</html>

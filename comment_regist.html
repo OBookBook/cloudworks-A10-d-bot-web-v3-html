@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>コメント登録</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/style.css" />
+  <style>
+  textarea {
+    max-width: 600px;
+    font-size: 16px;
+    height: 70px;
+    margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  select {
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <!-- サイドメニュー -->
+<div class="sidebar">
+    <h2>設定メニュー</h2>
+    <!-- ゲストモード用メニュー -->
+    <!-- <a href="tweet_japanese.html">日本人いいね</a> -->
+    <!-- <a href="./tweet_japanese.html">Twitter拡散サービス(日本人いいね)</a> -->
+    <a href="./tweet_sensyuken.html">選手権いいね</a>
+    <a href="./tweet.html">いいね・ﾌﾞｯｸﾏｰｸ</a>
+    <a href="./account_list.html">Xアカウント一覧</a>
+    <a href="./account_regist.html">Xアカウント登録</a>
+    <a href="./account_regist2.html">Xアカウント登録(貸出)</a>
+    <a href="./password.html">パスワード変更</a>
+    <a href="./upload.html">動画アップロード</a>
+    <a href="./upload.html">画像アップロード</a>
+    <a href="./user_master.html">AI API設定</a>
+    <a href="./user_list.html">ユーザー編集(管理者)</a>
+    <a href="./login.html">ログアウト</a>
+  </div>
+    <div class="main">
+      <h2 class="tx-white">新規コメント登録</h2>
+      <form method="POST" action="?">
+        <input type="hidden" name="account_id" value="<?= htmlspecialchars($account_id) ?>">
+
+        <p><label><input type="checkbox" name="new_enable" checked>有効</label></p>
+
+        <div class="mode-row">
+          <span>モード:</span>
+          <div class="radio-group">
+            <label><input type="radio" name="new_mode" value="post" checked>ポスト</label>
+            <label><input type="radio" name="new_mode" value="reply">リプライ</label>
+            <label><input type="radio" name="new_mode" value="replytoreply">リプライtoリプライ</label>
+          </div>
+        </div>
+
+        <?php if (!empty($_SESSION['media_enable'])): ?>
+        <div class="mode-row">
+          <span>メディア:</span>
+          <div class="radio-group">
+            <label><input type="radio" name="new_mediatype" value="" checked>なし</label>
+            <label><input type="radio" name="new_mediatype" value="video">動画</label>
+            <label><input type="radio" name="new_mediatype" value="photo">画像</label>
+          </div>
+        </div>
+        <?php endif; ?>
+
+        <p>
+          時間帯:
+          <select name="time_zone_setting">
+            <option value="">なし</option>
+            <option value="time_zone_1">時間帯1</option>
+            <option value="time_zone_2">時間帯2</option>
+            <option value="time_zone_3">時間帯3</option>
+            <option value="time_zone_4">時間帯4</option>
+          </select>
+        </p>
+
+<div class="comment-grid">
+    <div class="comment-item">
+      <label for="new_comment1">コメント1</label>
+      <textarea name="new_comment1" id="new_comment1" placeholder="コメント1"></textarea>
+    </div>
+    <div class="comment-item">
+      <label for="new_comment2">コメント2</label>
+      <textarea name="new_comment2" id="new_comment2" placeholder="コメント2"></textarea>
+    </div>
+    <div class="comment-item">
+      <label for="new_comment3">コメント3</label>
+      <textarea name="new_comment3" id="new_comment3" placeholder="コメント3"></textarea>
+    </div>
+    <div class="comment-item">
+      <label for="new_comment4">コメント4</label>
+      <textarea name="new_comment4" id="new_comment4" placeholder="コメント4"></textarea>
+    </div>
+    <div class="comment-item">
+      <label for="new_comment5">コメント5</label>
+      <textarea name="new_comment5" id="new_comment5" placeholder="コメント5"></textarea>
+    </div>
+    <div class="comment-item">
+      <label for="new_comment6">コメント6</label>
+      <textarea name="new_comment6" id="new_comment6" placeholder="コメント6"></textarea>
+    </div>
+    <div class="comment-item">
+      <label for="new_comment7">コメント7</label>
+      <textarea name="new_comment7" id="new_comment7" placeholder="コメント7"></textarea>
+    </div>
+    <div class="comment-item">
+      <label for="new_comment8">コメント8</label>
+      <textarea name="new_comment8" id="new_comment8" placeholder="コメント8"></textarea>
+    </div>
+    <div class="comment-item">
+      <label for="new_comment9">コメント9</label>
+      <textarea name="new_comment9" id="new_comment9" placeholder="コメント9"></textarea>
+    </div>
+    <div class="comment-item">
+      <label for="new_comment10">コメント10</label>
+      <textarea name="new_comment10" id="new_comment10" placeholder="コメント10"></textarea>
+    </div>
+
+</div>
+
+        <button class="btn" type="submit">登録</button>
+      </form>
+
+      <h2 class="tx-white">ポスト一覧</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>有効</th>
+            <th>コメント</th>
+            <?php if (!empty($_SESSION['media_enable'])): ?><th>メディア</th><?php endif; ?>
+            <th>時間帯</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <?php while ($row = $result_post->fetch_assoc()): ?> -->
+          <tr>
+            <td><?= $row['enable'] ? '〇' : '×' ?></td>
+            <td><?= htmlspecialchars($row['comment']) ?></td>
+            <?php if (!empty($_SESSION['media_enable'])): ?>
+              <td><?= $row['movie_enable'] ? '動画' : ($row['photo_enable'] ? '画像' : 'なし') ?></td>
+            <?php endif; ?>
+            <td>
+              <!-- <?php
+                echo match((int)$row['reserve_mode']) {
+                  1 => '時間帯1',
+                  2 => '時間帯2',
+                  3 => '時間帯3',
+                  4 => '時間帯4',
+                  default => 'なし',
+                };
+              ?> -->
+            </td>
+            <td>
+              <button class="btn" onclick="editComment(<?= $row['id'] ?>)">編集</button>
+              <form method="POST" action="?" style="display:inline;">
+                <input type="hidden" name="type" value="comment_del">
+                <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                <input type="hidden" name="account_id" value="<?= $account_id ?>">
+                <button type="submit" class="btn" onclick="return confirm('削除しますか？')">削除</button>
+              </form>
+            </td>
+          </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    function editComment(id) {
+      location.href = './comment_edit.php?id=' + id;
+    }
+  </script>
+</body>
+</html>
