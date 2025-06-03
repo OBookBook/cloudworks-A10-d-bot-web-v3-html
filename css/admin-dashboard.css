@@ -1,3 +1,25 @@
+/*
+ * ============================================
+ * X-DBOT 管理画面ダッシュボードスタイル
+ * ファイル名: admin-dashboard.css
+ * 用途: 管理画面（
+    sidebar.html
+    tweet_sensyuken.html
+    tweet.html
+    account_list.html
+    account_edit.html
+    comment_list.html
+    comment_regist.html
+    search_list.html
+    account_regist.html
+    account_regist2.html
+    password.html
+    upload.html
+    user_master.html
+）のページ用
+ * ============================================
+ */
+
 * {
   box-sizing: border-box;
 }
