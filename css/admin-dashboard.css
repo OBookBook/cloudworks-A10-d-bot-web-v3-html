@@ -439,6 +439,20 @@ input[type="text"].short {
 }
 
 /* comment_regist.html */
+.comment-regist-page textarea {
+  max-width: 600px;
+  font-size: 16px;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+.comment-regist-page input[type="text"],
+.comment-regist-page select {
+  width: 300px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
 .mode-row {
   display: flex;
   align-items: center;
