@@ -35,10 +35,13 @@ function parallaxHero() {
   const heroSection = document.querySelector(".hero");
   const heroImage = document.querySelector(".hero-image");
 
+  // Check if elements exist before adding event listener
+  if (!heroSection) return;
+
   window.addEventListener("scroll", () => {
     const scrollPosition = window.pageYOffset;
 
-    if (scrollPosition <= heroSection.offsetHeight) {
+    if (scrollPosition <= heroSection.offsetHeight && heroImage) {
       const parallaxValue = scrollPosition * 0.4;
       heroImage.style.transform = `translateY(${parallaxValue}px)`;
     }
@@ -120,8 +123,12 @@ function typeWriterEffect(element, text, speed = 50) {
 
 // Add subtle particle effect to hero section (for future enhancement)
 function createParticleEffect() {
-  const canvas = document.createElement("canvas");
   const heroSection = document.querySelector(".hero");
+
+  // Check if hero section exists
+  if (!heroSection) return;
+
+  const canvas = document.createElement("canvas");
 
   canvas.classList.add("particle-canvas");
   canvas.style.position = "absolute";
