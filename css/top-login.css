@@ -58,11 +58,17 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: var(--navy-dark);
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
+    url("../img/bg.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text-white);
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+  min-height: 100vh;
 }
 
 a {
@@ -189,7 +195,6 @@ nav a:hover::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--gradient-navy);
   position: relative;
   padding: 0 var(--spacing-xl);
   overflow: hidden;
@@ -501,16 +506,10 @@ nav a:hover::after {
 .features {
   padding: var(--spacing-huge) 0;
   background: radial-gradient(
-      ellipse at top,
-      rgba(212, 175, 55, 0.08) 0%,
-      transparent 50%
-    ),
-    linear-gradient(
-      135deg,
-      var(--navy-dark) 0%,
-      #0f1419 50%,
-      var(--navy-medium) 100%
-    );
+    ellipse at top,
+    rgba(212, 175, 55, 0.08) 0%,
+    transparent 50%
+  );
   position: relative;
   overflow: hidden;
 }
@@ -900,7 +899,6 @@ nav a:hover::after {
   align-items: center;
   justify-content: center;
   padding: var(--spacing-xl);
-  background: var(--gradient-navy);
   position: relative;
   overflow: hidden;
 }
@@ -1113,7 +1111,6 @@ nav a:hover::after {
 /* CTA Section */
 .cta-section {
   padding: var(--spacing-xxl) var(--spacing-xl);
-  background-color: var(--navy-dark);
   position: relative;
   overflow: hidden;
 }
@@ -1223,12 +1220,6 @@ footer {
 /* About Section */
 .about-section {
   padding: var(--spacing-huge) var(--spacing-xl);
-  background: linear-gradient(
-    135deg,
-    var(--navy-dark) 0%,
-    var(--navy-medium) 50%,
-    var(--navy-light) 100%
-  );
   position: relative;
   overflow: hidden;
 }
